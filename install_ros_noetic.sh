@@ -9,8 +9,9 @@ sudo apt install -y ros-noetic-desktop-full
 
 source /opt/ros/noetic/setup.bash
 echo 'source /opt/ros/noetic/setup.bash' >> ~/.bashrc
-echo 'alias cm="~/catkin_ws; catkin_make"'
+echo 'alias cm="cd ~/catkin_ws; catkin_make"' >> ~/.bashrc
 source ~/.bashrc
+
 
 sudo apt install -y python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
 
@@ -19,10 +20,10 @@ sudo apt install python3-rosdep
 sudo rosdep init
 rosdep update
 
-mkdir -p '~/catkin_ws/src'
-cd '~/catkin_ws/src'
+echo 'mkdir -p ~/catkin_ws/src && cd ~/catkin_ws/src;'
+mkdir -p ~/catkin_ws/src && cd ~/catkin_ws/src;
 catkin_init_workspace
-cd '~/catkin_ws/'
+cd ~/catkin_ws/ && catkin_make
 cm
 source 'devel/setup.bash'
 
